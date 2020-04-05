@@ -1,5 +1,7 @@
 div.main{
 	min-height:300px;
+	word-wrap: break-word; word-break: normal;
+	word-break:break-all;
 }
 
 .panel-primary .panel-heading a{
