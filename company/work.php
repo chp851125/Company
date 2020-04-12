@@ -26,8 +26,6 @@ $site_title = mb_substr($site_title, 0, 11, "UTF-8");
  <link rel="shortcut icon" href="/favicon.ico">
  <link rel="apple-touch-icon" href="apple-touch-icon.png">
  
- <link rel="stylesheet" href="css/style.css">
- 
 </head>
 
 <body>

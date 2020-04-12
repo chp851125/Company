@@ -1,3 +1,10 @@
+<?php 
+	require_once '../mysqli_connect.php';
+	if(!isset($_SESSION['is_login']) || !$_SESSION['is_login']){
+		header("Location: login.php");
+	}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,15 +25,15 @@
 	crossorigin="anonymous"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
-<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="../css/style.css" />
 
-<link rel="shortcut icon" href="/favicon.ico">
+<link rel="shortcut icon" href="../favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
 </head>
 
 <body>
- <?php include_once 'menu.php';?>
+ <?php include_once 'menu_admin.php';?>
   
  <div class="main">
 		<div class="container">
@@ -38,7 +45,7 @@
 		</div>
 	</div>
  
- <?php include_once('footer.php');?>
+ <?php include_once('footer_admin.php');?>
  
 </body>
 </html>

@@ -1,9 +1,19 @@
+<?php 
+	require_once '../mysqli_connect.php';
+	require_once '../function.php';
+	if(!isset($_SESSION['is_login']) || !$_SESSION['is_login']){
+		header("Location: login.php");
+	}
+	//$datas = get_all_article();
+	//print_r($datas);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-COMpatible" content="IE=edge,chrome=1">
-<title>會員註冊</title>
+<title>公司網站後台-會員新增</title>
 <meta name="description" content="公司官方網站">
 <meta name="author" content="ChunPei">
 <meta name="viewport" content="width=divice-width, initial-scale=1.0">
@@ -18,23 +28,22 @@
 	crossorigin="anonymous"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
-<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="../css/style.css" />
 
-<link rel="shortcut icon" href="/favicon.ico">
+<link rel="shortcut icon" href="../favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
 
 
 </head>
 
 <body>
- <?php include_once 'menu.php';?>
+ <?php include_once 'menu_admin.php';?>
   
  <div class="main">
 		<div class="container">
 			<div class="row">
-				<div class="col-xs-12 clo-sm-6 clo-sm-offset-3 thumbnail">
-					<form class="form-horizontal" id = "register_form" method="post" action="php/add_member.php">
+				<div class="col-xs-12">
+					<form class="form-horizontal" id = "register_form">
 						<div class="form-group">
 							<label for="account" class="col-sm-4 control-label">帳號</label>
 							<div class="col-sm-4">
@@ -70,15 +79,14 @@
 		</div>
 	</div>
  
-<?php include_once('footer.php');?>
-
- <script>
+ <?php include_once('footer_admin.php');?>
+  <script>
  	$(document).ready(function(){
  	 	$("#account").keyup(function(){
  	 	 	if($(this).val() != ''){
  	 	 		$.ajax({
  	 	 	 		type : "POST",
- 	 	 	 		url : "php/check_account.php",
+ 	 	 	 		url : "../php/check_account.php",
  	 	 	 	 	data : { 'n':$(this).val() },
  	 	 	 	 	dataType : 'html'
  	 	 	 		}).done(function(data){
@@ -116,7 +124,7 @@
  	 	 	else{
  	 	 		$.ajax({
  	 	 	 		type : "POST",
- 	 	 	 		url : "php/add_user.php",
+ 	 	 	 		url : "../php/add_user.php",
  	 	 	 	 	data : { 
  	 	 	 	 	 	'account':$("#account").val(),
  	 	 	 	 	 	'password':$("#password").val(),
@@ -125,11 +133,11 @@
  	 	 	 		}).done(function(data){
  	 	 	 	 		console.log(data)
  	 	 	 	 		if( data == "yes"){
- 	 	 	 	 	 		alert("註冊成功，請按確認轉跳登入頁");
- 	 	 	 	 	 		window.location.href = "admin/index.php";
+ 	 	 	 	 	 		alert("新增成功，請按確認轉跳登入頁");
+ 	 	 	 	 	 		window.location.href = "member_list.php";
  	 	 	 	 	 	}
  	 	 	 	 		else{
- 	 	 	 	 	 		alert("註冊失敗，請確認您的電腦連線狀態或連繫您的系統管理員");
+ 	 	 	 	 	 		alert("新增失敗"+data);
  	 	 	 	 	 	}
  	 	 	 	 	}).fail(function(jqXHR, textStatus, errorThrown){
  	 	 	 	 	 	alert("error");
@@ -140,5 +148,6 @@
  		});
  	 });
  </script>
+ 
 </body>
 </html>

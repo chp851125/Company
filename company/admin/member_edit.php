@@ -1,9 +1,19 @@
+<?php 
+	require_once '../mysqli_connect.php';
+	require_once '../function.php';
+	if(!isset($_SESSION['is_login']) || !$_SESSION['is_login']){
+		header("Location: login.php");
+	}
+	$data = get_user($_GET['i']);
+	//print_r($datas);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-COMpatible" content="IE=edge,chrome=1">
-<title>會員註冊</title>
+<title>公司網站後台-會員編輯</title>
 <meta name="description" content="公司官方網站">
 <meta name="author" content="ChunPei">
 <meta name="viewport" content="width=divice-width, initial-scale=1.0">
@@ -18,27 +28,27 @@
 	crossorigin="anonymous"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
-<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="../css/style.css" />
 
-<link rel="shortcut icon" href="/favicon.ico">
+<link rel="shortcut icon" href="../favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
 
 
 </head>
 
 <body>
- <?php include_once 'menu.php';?>
+ <?php include_once 'menu_admin.php';?>
   
  <div class="main">
 		<div class="container">
 			<div class="row">
-				<div class="col-xs-12 clo-sm-6 clo-sm-offset-3 thumbnail">
-					<form class="form-horizontal" id = "register_form" method="post" action="php/add_member.php">
+				<div class="col-xs-12">
+					<form class="form-horizontal" id = "register_form">
+						<input type="hidden" id="id" value="<?php echo $data['id'];?>">
 						<div class="form-group">
 							<label for="account" class="col-sm-4 control-label">帳號</label>
 							<div class="col-sm-4">
-								<input type="text" class="form-control" name="account" id="account" placeholder="請輸入您的帳號" required>
+								<input type="text" class="form-control" name="account" id="account" placeholder="請輸入您的帳號" required value="<?php echo $data['account'];?>">
 							</div>
 						</div>
 						<div class="form-group">
@@ -48,15 +58,9 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="confirm_password" class="col-sm-4 control-label">確認密碼</label>
-							<div class="col-sm-4">
-								<input type="password" class="form-control" id="confirm_password" placeholder="再次輸入您的密碼" required>
-							</div>
-						</div>
-						<div class="form-group">
 							<label for="name" class="col-sm-4 control-label">名字</label>
 							<div class="col-sm-4">
-								<input type="text" class="form-control" name="name" id="name" placeholder="請輸入您的名字" required>
+								<input type="text" class="form-control" name="name" id="name" placeholder="請輸入您的名字" required value="<?php echo $data['name'];?>">
 							</div>
 						</div>
 						<div class="form-group">
@@ -70,20 +74,19 @@
 		</div>
 	</div>
  
-<?php include_once('footer.php');?>
-
- <script>
+ <?php include_once('footer_admin.php');?>
+  <script>
  	$(document).ready(function(){
  	 	$("#account").keyup(function(){
  	 	 	if($(this).val() != ''){
  	 	 		$.ajax({
  	 	 	 		type : "POST",
- 	 	 	 		url : "php/check_account.php",
+ 	 	 	 		url : "../php/check_account.php",
  	 	 	 	 	data : { 'n':$(this).val() },
  	 	 	 	 	dataType : 'html'
  	 	 	 		}).done(function(data){
  	 	 	 	 		console.log(data);
- 	 	 	 	 		if( data == "yes"){
+ 	 	 	 	 		/*if( data == "yes"){
  	 	 	 	 	 		$("#account").parent().parent().removeClass('has-success').addClass('has-error');
  	 	 	 	 	 		//$("#register_form button[type='submit']").addClass('disabled');
  	 	 	 	 	 		$('#register_form button[type="submit"]').attr('disabled', true);
@@ -91,7 +94,7 @@
  	 	 	 	 		else{
  	 	 	 	 	 		$("#account").parent().parent().removeClass('has-error').addClass('has-success');
  	 	 	 	 	 		$('#register_form button[type="submit"]').attr('disabled', false);
- 	 	 	 	 	 	}
+ 	 	 	 	 	 	}*/
  	 	 	 	 	}).fail(function(jqXHR, textStatus, errorThrown){
  	 	 	 	 	 	alert("error");
  	 	 	 	 	 	console.log(jqXHR.responseText);
@@ -106,18 +109,12 @@
 
  	 	
  		$("#register_form").submit(function(){
- 	 	 	if($("#password").val() != $("#confirm_password").val()){
- 	 	 	 	$("#password").parent().parent().addClass("has-error");
- 	 	 	    $("#confirm_password").parent().parent().addClass("has-error");
-	 	 	 	
- 	 	 		alert("密碼不相符，請再次輸入");
- 	 	 		return false;
- 	 	 	}
- 	 	 	else{
+ 	 		
  	 	 		$.ajax({
  	 	 	 		type : "POST",
- 	 	 	 		url : "php/add_user.php",
+ 	 	 	 		url : "../php/update_user.php",
  	 	 	 	 	data : { 
+ 	 	 	 	 	 	'id' : $("#id").val(),
  	 	 	 	 	 	'account':$("#account").val(),
  	 	 	 	 	 	'password':$("#password").val(),
  	 	 	 	 	 	'name':$("#name").val() },
@@ -125,20 +122,21 @@
  	 	 	 		}).done(function(data){
  	 	 	 	 		console.log(data)
  	 	 	 	 		if( data == "yes"){
- 	 	 	 	 	 		alert("註冊成功，請按確認轉跳登入頁");
- 	 	 	 	 	 		window.location.href = "admin/index.php";
+ 	 	 	 	 	 		alert("更新成功，請按確認轉跳登入頁");
+ 	 	 	 	 	 		window.location.href = "member_list.php";
  	 	 	 	 	 	}
  	 	 	 	 		else{
- 	 	 	 	 	 		alert("註冊失敗，請確認您的電腦連線狀態或連繫您的系統管理員");
+ 	 	 	 	 	 		alert("更新失敗");
  	 	 	 	 	 	}
  	 	 	 	 	}).fail(function(jqXHR, textStatus, errorThrown){
  	 	 	 	 	 	alert("error");
  	 	 	 	  		console.log(jqXHR.responseText);
  	 	 	 	 	});
- 	 	 	}
+ 	 	 	
  	 	 	return false;
  		});
  	 });
  </script>
+ 
 </body>
 </html>

@@ -7,25 +7,22 @@ switch ($file_name) {
         $page_index = 0;
         break;
     case 'article_list':
-        $page_index = 1;
-        break;
-    case 'article':
+    case 'article_edit':
+    case 'article_add':
         $page_index = 1;
         break;
     case 'work_list':
+    case 'work_edit':
+    case 'work_add':
         $page_index = 2;
         break;
-    case 'work':
-        $page_index = 2;
-        break;
-    case 'about':
+    case 'member_list':
+    case 'member_edit':
+    case 'member_add':
         $page_index = 3;
         break;
-    case 'register':
-        $page_index = 4;
-        break;
     default: // article有bug 顯示article.php，設為預設值
-        $page_index = 1;
+        $page_index = 0;   //work待確認是否正常
         break;
 }
 ?>
@@ -38,8 +35,11 @@ switch ($file_name) {
 
 					<ul class="nav nav-pills">
 						<li class="nav-item"><a
+							class="nav-link "
+							href="../index.php">前台首頁</a></li>
+						<li class="nav-item"><a
 							class="nav-link <?php echo ($page_index ==0)?"active":""?>"
-							href="./">首頁</a></li>
+							href="./">後台首頁</a></li>
 						<li class="nav-item"><a
 							class="nav-link <?php echo ($page_index ==1)?"active":""?>"
 							href="article_list.php">所有文章</a></li>
@@ -48,10 +48,10 @@ switch ($file_name) {
 							href="work_list.php">所有作品</a></li>
 						<li class="nav-item"><a
 							class="nav-link <?php echo ($page_index ==3)?"active":""?>"
-							href="about.php">關於我們</a></li>
+							href="member_list.php">所有會員</a></li>
 						<li class="nav-item"><a
-							class="nav-link <?php echo ($page_index ==4)?"active":""?>"
-							href="register.php">註冊</a></li>
+							class="nav-link"
+							href="../php/logout.php">登出</a></li>
 					</ul>
 
 				</div>
