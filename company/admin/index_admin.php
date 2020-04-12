@@ -1,3 +1,10 @@
+<?php 
+	require_once '../php/mysqli_connect.php';
+	if(!isset($_SESSION['is_login']) || !S_SESSION['is_login']){
+		header("Location: login.php");
+	}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,10 +27,10 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
 <link rel="stylesheet" href="css/style.css" />
 
-<link rel="shortcut icon" href="/favicon.ico">
+<link rel="shortcut icon" href="../favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="../css/style.css">
 
 </head>
 
