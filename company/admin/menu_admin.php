@@ -23,6 +23,7 @@ switch ($file_name) {
         break;
     default: // article有bug 顯示article.php，設為預設值
         $page_index = 0;   //work待確認是否正常
+        break;
 }
 ?>
 <div class="top">
@@ -52,6 +53,7 @@ switch ($file_name) {
 							class="nav-link"
 							href="../php/logout.php">登出</a></li>
 					</ul>
+
 				</div>
 			</div>
 		</div>

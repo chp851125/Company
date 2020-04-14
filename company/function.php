@@ -35,6 +35,23 @@ function get_all_article(){
     return $datas;
 }
 
+function get_all_work(){
+    $datas = array();
+    $sql="SELECT * FROM work";
+    $query = $_SESSION['$link']->query($sql);
+    if($query){
+        if(mysqli_num_rows($query) > 0){
+            while($row = mysqli_fetch_assoc($query)){
+                $datas[]=$row;
+            }
+        }
+    }
+    else{
+        echo "{$sql}語法請求失敗<br>" .mysqli_error($_SESSION['link']);
+    }
+    return $datas;
+}
+
 function get_all_member(){
     $datas = array();
     $sql="SELECT * FROM user";

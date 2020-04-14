@@ -16,3 +16,7 @@ table th{
 	background-color:#000000;
 	color:#ffffff;
 }
+
+div.show_image img{
+	width: 300px;
+}
