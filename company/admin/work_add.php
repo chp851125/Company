@@ -109,6 +109,35 @@
 			});
  	 	 });
 
+	 	 //圖片刪除
+	 	 $("a.del_image").click(function(){
+		 	 if($("#image_path").val() != ''){
+		 		var c = confirm("確定刪除？");
+			 	 if(c){
+				 	 $.ajax({
+					 	 type : 'POST',
+					 	 url : '../php/del_file.php',
+					 	 data : {
+						 	 'file' : $("#image_path").val()
+						 },
+						 dataType : 'html'
+				 }).done(function(data){
+					 if (data == "yes"){
+						 $("div.show_image").html("");
+						 $("#image_path").val('');
+						 $("input.image").val('')
+					 }
+				  }).fail(function(jqXHR, textStatus, errorThrown){
+					alert("error");
+					console.log(jqXHR.responseText);
+				 });
+			   }
+			 } 
+			 else{
+				 alert("尚未上傳檔案");
+			 }
+		 });
+
  	 	$("#work").submit(function(){
  	 		if($("#introduce").val() == ''){
  	 	 		alert("請填寫簡介");
