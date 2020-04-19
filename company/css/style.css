@@ -17,6 +17,6 @@ table th{
 	color:#ffffff;
 }
 
-div.show_image img{
+div.show_image img, div.show_video video{
 	width: 300px;
 }

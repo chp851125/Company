@@ -52,7 +52,7 @@
 						<tr>
 							<th>簡介</th>
 							<th>圖片路徑</th>
-							<th>圖片路徑</th>
+							<th>影片路徑</th>
 							<th>發布狀況</th>
 							<th>上傳時間</th>
 							<th>管理動作</th>
@@ -62,8 +62,8 @@
 							<?php foreach($datas as $a_data):?>
 							<tr>
 								<td><?php echo $a_data['introduce'];?></td>
-								<td><?php echo $a_data['images_path'];?></td>
-								<td><?php echo $a_data['vedio_path'];?></td>
+								<td><?php echo $a_data['image_path'];?></td>
+								<td><?php echo $a_data['video_path'];?></td>
 								<td><?php echo ($a_data['publish'])?'已發布':'未發布';?></td>
 								<td><?php echo $a_data['upload_date'];?></td>
 								<td>
