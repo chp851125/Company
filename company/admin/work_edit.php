@@ -22,6 +22,8 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
 	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
@@ -55,10 +57,12 @@
 							<label for="content">圖片上傳</label>
 							<input type="file" class="image" accept="image/gif, image/jpeg, image/png">
 							<input type="hidden" id="image_path" value="<?php echo (!is_null($data['image_path']))?$data['image_path']:"";?>">
-							<div class="show_image"></div>
+							<div class="show_image">
 							 <?php if(!is_null($data['image_path'])):?>
-							 	<div><img src="<?php echo '../' . $data['image_path'];?>" width="300"></div>
+							 	<img src="<?php echo '../' . $data['image_path'];?>" width="300">
 							 <?php endif;?>
+							</div>
+							 <br>
 							<a href='javascript:void(0);' class="del_image btn btn-default">刪除</a>
 						</div>
 						<br>
@@ -66,10 +70,12 @@
 							<label for="content">影片上傳</label>
 							<input type="file" class="video" accept="video/mp4">
 							<input type="hidden" id="video_path" value="<?php echo (!is_null($data['video_path']))?$data['video_path']:"";?>">
-							<div class="show_video"></div>
+							<div class="show_video">
 							 <?php if(!is_null($data['video_path'])):?>
 							 	<div><video src='<?php echo "../" . $data['video_path'];?>' controls width="300"></video></div>
 							 <?php endif;?>
+							 </div>
+							 <br>
 							<a href='javascript:void(0);' class="del_video btn btn-default">刪除</a>
 						</div>
 						
@@ -100,6 +106,8 @@
 	 	 		
 	 	 	form_data.append("file", file_data);
 	 	 	form_data.append("save_path", save_path);
+
+	 	 	$("div.show_video").html('<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>');
 
 	 	 	$.ajax({
 		 	 	type : 'POST',
@@ -158,6 +166,8 @@
 	 	 		
 	 	 	form_data.append("file", file_data);
 	 	 	form_data.append("save_path", save_path);
+
+	 	 	$("div.show_video").html('<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>');
 
 	 	 	$.ajax({
 		 	 	type : 'POST',

@@ -62,8 +62,8 @@
 							<?php foreach($datas as $a_data):?>
 							<tr>
 								<td><?php echo $a_data['introduce'];?></td>
-								<td><?php echo $a_data['image_path'];?></td>
-								<td><?php echo $a_data['video_path'];?></td>
+								<td><?php echo $a_data['image_path'];?></td><?php echo $a_data['image_path']?>
+								<td><?php echo $a_data['video_path'];?></td><?php echo $a_data['video_path']?>
 								<td><?php echo ($a_data['publish'])?'已發布':'未發布';?></td>
 								<td><?php echo $a_data['upload_date'];?></td>
 								<td>
@@ -82,11 +82,11 @@
 			</div>
 		</div>
 	</div>
- 
+
  <?php include_once('footer_admin.php');?>
  <script>
  	$(document).ready(function(){
- 	 	$("a.del_article").click(function(){
+ 	 	$("a.del_work").click(function(){
  	 	 	var c = confirm("您確定要刪除嗎？");
  	 	 	//console.log($(this).attr("data-id"));
  	 	 	this_tr = $(this).parent().parent();

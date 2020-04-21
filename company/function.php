@@ -355,6 +355,31 @@ function del_article($id){
     return $result;
 }
 
+function del_work($id){
+    $result = null;
+    
+    $work = get_edit_work($id);
+    //判斷路徑是否為空值，不為空值 server一同刪除該檔案
+    if($work['image_path']<>''){
+        unlink("../".$work['image_path']);
+    }
+    if($work['video_path']<>''){
+        unlink("../".$work['video_path']);
+    }
+        
+    $sql= "DELETE FROM work WHERE id = '$id'";
+    $query = $_SESSION['$link']->query($sql);
+    if($query){
+        if(mysqli_affected_rows($_SESSION['$link']) == 1){
+            $result = true;
+        }
+    }
+    else {
+        echo "{$sql}語法請求失敗:<br>" .mysqli_connect_error($_SESSION['link']);
+    }
+    return $result;
+}
+
 function del_member($id){
     $result = null;
     $sql= "DELETE FROM user WHERE id = '{$id}'";
