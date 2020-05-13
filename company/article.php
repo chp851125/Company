@@ -27,29 +27,32 @@ $article = get_article($_GET['i']);
 	crossorigin="anonymous"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
-<link rel="stylesheet" href="css/style.css" />
+
 
 <link rel="shortcut icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
+<title>No Sidebar - Strongly Typed by HTML5 UP</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="assets/css/main.css" />
+
+
 </head>
 
-<body>
- <?php include_once 'menu.php';?>
-  
- <div class="main">
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-12">
+<body class="no-sidebar is-preload">
+	<div id="page-wrapper">
+		<?php include_once 'menu.php';?>
+		<section id="main">
+			<div class="container">
+				<div id="content">
 					<h1><?php echo $article['title'];?></h1>
 					<hr>
      				<?php echo $article['content'];?>
-   			    </div>
+  				</div>
 			</div>
-		</div>
+		</section>
+		<?php include_once('footer.php');?>
 	</div>
- 
- <?php include_once('footer.php');?>
- 
 </body>
 </html>

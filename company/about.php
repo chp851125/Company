@@ -18,23 +18,22 @@
  
 </head>
 
-<body>
- <?php include_once 'menu.php';?>
-  
- <div class="main">
-  <div class="container">
-   <div class="row">
-    <div class="col-xs-12 col-sm-6">
-         關於我們資訊A
-    </div>
-    <div class="col-xs-12 col-sm-6">
-         關於我們資訊B
-    </div>
-   </div>
-  </div>
- </div>
- 
- <?php include_once('footer.php');?>
- 
+<body class="no-sidebar is-preload">
+	<div id="page-wrapper">
+		<?php include_once 'menu.php';?>
+		<section id="main">
+			<div class="container">
+				<div id="content">
+					<div class="col-xs-12 col-sm-6">
+						 關於我們資訊A
+					</div>
+					<div class="col-xs-12 col-sm-6">
+						 關於我們資訊B
+					</div>
+				</div>
+			</div>
+		</section>
+		<?php include_once('footer.php');?>
+	</div>
 </body>
 </html>

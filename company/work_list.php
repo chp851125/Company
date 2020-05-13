@@ -26,49 +26,51 @@ $datas = get_publish_work();
 	crossorigin="anonymous"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
-<link rel="stylesheet" href="css/style.css" />
 
 <link rel="shortcut icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
+<title>No Sidebar - Strongly Typed by HTML5 UP</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="assets/css/main.css" />
+
+
 </head>
 
-<body>
- <?php include_once 'menu.php';?>
-  
- <div class="main">
-		<div class="container">
-			<div class="row">
-   
-            <?php if(!empty($datas)):?>
-     		<?php foreach($datas as $a_work):?>
-      			<div class="col-xs-12 col-sm-4">
-					<div class="thumbnail">
-						<?php if($a_work['image_path']):?>
-							<img src="<?php echo $a_work['image_path'];?>" class="img-responsive">
-						<?php else:?>
-						<div class="embed-responsive embed-responsive-16by9">
- 							 <video src="<?php echo $a_work['video_path'];?>" controls></video>
+<body class="no-sidebar is-preload">
+	<div id="page-wrapper">
+		<?php include_once 'menu.php';?>
+		<section id="main">
+			<div class="container">
+				<div id="content">
+					<?php if(!empty($datas)):?>
+					<?php foreach($datas as $a_work):?>
+						<div class="col-xs-12 col-sm-4">
+							<div class="thumbnail">
+								<?php if($a_work['image_path']):?>
+									<img src="<?php echo $a_work['image_path'];?>" class="img-responsive">
+								<?php else:?>
+								<div class="embed-responsive embed-responsive-16by9">
+									 <video src="<?php echo $a_work['video_path'];?>" controls></video>
+								</div>
+								<?php endif;?>
+								<div class="caption">
+									<?php echo $a_work['introduce'];?>
+									<div align="center">
+										<a href="work.php?i=<?php echo $a_work['id']?>" class="btn btn-custom" role="button">詳 細 內 容</a>
+									</div>
+								</div>
+							</div>
 						</div>
-						<?php endif;?>
-						<div class="caption">
-							<?php echo $a_work['introduce'];?>
-							<p>
-								<a href="work.php?i=<?php echo $a_work['id']?>" class="btn btn-primary" role="button">查看作品</a>
-							</p>
-						</div>
-					</div>
+					 <?php endforeach;?>
+					 <?php else: ?>
+					 <h1>尚無資料</h1>
+					 <?php endif;?>
 				</div>
-     
-   			 <?php endforeach;?>
-    		 <?php else: ?>
-    		 <h1>尚無資料</h1>
-   			 <?php endif;?>
-  			 </div>
-		</div>
+			</div>
+		</section>
+		<?php include_once('footer.php');?>
 	</div>
- 
- <?php include_once('footer.php');?>
- 
 </body>
 </html>

@@ -1,61 +1,20 @@
-<?php
-$file_path = $_SERVER['PHP_SELF']; // http://localhost/xampp/company/index.php
-$file_name = basename($file_path, ".php"); // index
-// echo $file_name; //article有bug 顯示article.php
-switch ($file_name) {
-    case 'index':
-        $page_index = 0;
-        break;
-    case 'article_list':
-        $page_index = 1;
-        break;
-    case 'article':
-        $page_index = 1;
-        break;
-    case 'work_list':
-        $page_index = 2;
-        break;
-    case 'work':
-        $page_index = 2;
-        break;
-    case 'about':
-        $page_index = 3;
-        break;
-    case 'register':
-        $page_index = 4;
-        break;
-    default: // article有bug 顯示article.php，設為預設值
-        $page_index = 1;
-        break;
-}
-?>
-<div class="top">
-	<div class="jumbotron">
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-12">
-					<h1 class="text-center">art公司網站</h1>
+<section id="header">
+	<div class="container">
+		<!-- Logo 
+			<h1 id="logo"><a href="index.html">Da-Ding</a></h1>
+			<p>A responsive HTML5 site template. Manufactured by HTML5 UP.</p>-->
 
-					<ul class="nav nav-pills">
-						<li class="nav-item"><a
-							class="nav-link <?php echo ($page_index ==0)?"active":""?>"
-							href="./">首頁</a></li>
-						<li class="nav-item"><a
-							class="nav-link <?php echo ($page_index ==1)?"active":""?>"
-							href="article_list.php">所有文章</a></li>
-						<li class="nav-item"><a
-							class="nav-link <?php echo ($page_index ==2)?"active":""?>"
-							href="work_list.php">所有作品</a></li>
-						<li class="nav-item"><a
-							class="nav-link <?php echo ($page_index ==3)?"active":""?>"
-							href="about.php">關於我們</a></li>
-						<li class="nav-item"><a
-							class="nav-link <?php echo ($page_index ==4)?"active":""?>"
-							href="register.php">註冊</a></li>
-					</ul>
+		<!-- Nav -->
+			<nav id="nav">
+				<ul>
+					<li><h1 id="logo"><a href="index.php">Da-Ding</a></h1></li>
+					<li><a class="icon solid fa-home" href="index.php"><span>首頁</span></a></li>
+					<li><a class="icon fa-chart-bar" href="article_list.php"><span>文章</span></a></li>
+					<li><a class="icon solid fa-cog" href="work_list.php"><span>作品</span></a></li>
+					<li><a class="icon solid fa-retweet" href="about.php"><span>關於我們</span></a></li>
+					<li><a class="icon solid fa-sitemap" href="register.php"><span>註冊</span></a></li>
+				</ul>
+			</nav>
 
-				</div>
-			</div>
-		</div>
 	</div>
-</div>
+</section>

@@ -26,20 +26,23 @@ $datas = get_publish_article();
 	crossorigin="anonymous"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
-<link rel="stylesheet" href="css/style.css" />
-
 <link rel="shortcut icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
+<title>No Sidebar - Strongly Typed by HTML5 UP</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="assets/css/main.css" />
+
+
 </head>
 
-<body>
- <?php include_once 'menu.php';?>
-  
- <div class="main">
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-12">
+<body class="no-sidebar is-preload">
+	<div id="page-wrapper">
+		<?php include_once 'menu.php';?>
+		<section id="main">
+			<div class="container">
+				<div id="content">
     
     			<?php if(!empty($datas)):?>
    			    <?php foreach($datas as $article):?>
@@ -49,26 +52,25 @@ $datas = get_publish_article();
                  $abstract = mb_substr($abstract, 0, 100, "UTF-8");
                 ?>
     
-  				   <div class="panel panel-primary">
+  				   <div class="panel panel-custom">
 						<div class="panel-heading">
 							<a href='article.php ?i=<?php echo $article['id'];?>'><?php echo $article['title']?></a>
 						</div>
 						<div class="panel-body">
-							<p>
+							
 								<span class="label label-info"><?php echo $article['category'];?></span>
 								<span class="label label-danger"><?php echo $article['create_date'];?></span>
-							</p>
+								<br>
  	  					    <?php echo $abstract." ...MORE";?>
 	  					</div>
-				   </div>
+				   </div><br>
     			   <?php endforeach;?>
    				   <?php endif;?>
-  				 </div>
+				   
+  				</div>
 			</div>
-		</div>
+		</section>
+		<?php include_once('footer.php');?>
 	</div>
- 
- <?php include_once('footer.php');?>
- 
 </body>
 </html>
