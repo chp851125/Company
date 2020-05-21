@@ -6,7 +6,7 @@
 
 ## 開發工具及技術
 - 技術：PHP, HTML, CSS, AJAX, MYSQL　
-- 工具：VSCODE, XAmPP, MYSQL, HTML5 UP!  
+- 工具：VSCODE, XAMPP, MYSQL, HTML5 UP!  
  `*前端使用 HTML5 UP! 模板，再依需求進行修改`
 
 
